@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <text>Choose family:</text>
+                            <select ng-model="query" class="input-medium">
+                                <option selected value="">All</option>
+                                <option selected value="Dorne">Dorne</option>
+                                <option selected value="Essos">Essos</option>
+                                <option selected value="The North">The North</option>
+                                <option selected value="The Reach">The Reach</option>
+                                <option selected value="The Riverlands">The Riverlands</option>
+                                <option selected value="The Vale">The Vale</option>
+                                <option selected value="The Wall and Beyond">The Wall and Beyond</option>
+                                <option selected value="The Westerlands">The Westerlands</option>
+                            </select>
+                           @* <li ng-modul="query"><option href="#" value="Dorne">Dorne</option></li>
+                            <li><a href="/Home">Essos</a></li>
+                            <li><a href="/Home">The North</a></li>
+                            <li><a href="/Home">The Reach</a></li>
+                            <li><a href="/Home">The Riverlands</a></li>
+                            <li><a href="/Home">The Vale</a></li>
+                            <li><a href="/Home">The Wall and Beyond</a></li>
+                            <li><a href="/Home">The Westerlands</a></li>*@
+                        </ul>
+                   @* 
+
+                    <ul class="nav navbar-nav navbar-right">
+                       
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profil <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                
+                                <li class="divider"></li>
+                                <li><a href="/Home/About">About</a></li>
+                            </ul>
+                        </li>
+                    </ul>*@
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+
+ <div class="container-fluid" ng-controller="GoTController">
+    	<ul class="thumbnails">
+            <span>Sort by:</span>
+            <select ng-model="sortorder" class="input-small">
+                <option selected value=""></option>
+                <option value="name">Name</option>
+                <option value="familyName">Family</option>
+                <option value="stillAlive">Still alive</option>
+            </select>
+            <div infinite-scroll='loadMore()'>
+			    <li class="bodyLi" ng-repeat="session in event.sessions | filter:query | orderBy:sortorder" ng-click="openCharacterDetails()" ng-mouseover="hoverIn();" ng-mouseleave="hoverOut();">
+				
+				    <div class="row session">
+					    @*<div class="span0 well votingWidget">
+						    <div class="votingButton" ng-click="upVoteSession(session)">
+							    <i class="icon-chevron-up icon-white"></i>
+						    </div>
+						    <div class="badge badge-inverse">
+							    <div>{{session.upVoteCount}}</div>
+						    </div>
+						    <div class="votingButton" ng-click="downVoteSession(session)">
+							    <i class="icon-chevron-down"></i>
+						    </div>
+					    </div>*@
+
+					        <div class="pixoutlined">
+                                <div class="outlined">
+						            <h4 class="well-title">{{session.name}}</h4>
+                                    <h6 style="margin-top:-10px">{{session.familyName}}</h6><br />
+                                    <img height="70" width="70"  ng-src="{{session.imageUrl}}" alt="{{session.name}}" />&thinsp;
+						            <span>Actor name: {{session.realLifeName}}</span>&thinsp;
+                                    @*<span>{{session.biography}}</span> <br />*@
+                                    <span><strong>Born: </strong>{{session.born}}</span>&thinsp;
+                                    <span ng-show="session.stillAlive">Character alive: &thinsp; <img height="45" width="45"  ng-src="{{imageAlive}}" alt="{{session.name}}" />&thinsp;</span>
+                                    <span ng-show="session.notAlive">Character not alive: &thinsp; <img height="45" width="45"  ng-src="{{imageDead}}" alt="{{session.name}}" />&thinsp;</span>
+                                    <span width="30px"><a ng-show="hoverEdit" class="animate-show">More details</a></span><br />
+                                </div>
+					        </div>
+                        </div>
+			    </li>
+            </div>
+		</ul>
+    </div>

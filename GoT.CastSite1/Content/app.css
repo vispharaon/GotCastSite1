@@ -1,0 +1,56 @@
+﻿      body {
+        padding-top: 0px; 
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+
+ul.bodyUl {
+    list-style: none;
+    margin: 0;
+padding: 0;
+border: inset;
+
+}
+
+li.bodyLi {
+    list-style: none;
+    /*display: inline;
+    border-bottom:outset;
+    padding-top: 20px;*/
+}
+
+.outlined {
+  outline: 2px solid grey;
+  background: transparent;
+}
+
+.pixoutlined {
+outline: 1px solid silver;
+}
+
+tr:hover {
+    background: #EEE;
+}
+li {
+
+    list-style-type: none;
+    padding: 6px 10px;
+}
+
+li:hover {
+    background: #EEE;
+}
+
+.animate-show {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    opacity: 1;
+}
+
+.animate-show.ng-hide-add,
+.animate-show.ng-hide-remove {
+    display: inline-block !important;
+}
+.animate-show.ng-hide {
+    opacity: 0;
+}

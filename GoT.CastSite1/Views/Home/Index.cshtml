@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div class="span1" ng-controller="GoTController">
+    @*<a>{{test}}</a>*@
+
+    <li class="bodyLi">Seven noble families fight for control of the mythical land of Westeros.</li>
+    <br />
+
+    <div class="container-fluid">
+    	<ul class="thumbnails">
+            <span>Sort by:</span>
+            <select ng-model="sortorder" class="input-small">
+                <option selected value=""></option>
+                <option value="name">Name</option>
+                <option value="familyName">Family</option>
+                <option value="stillAlive">Still alive</option>
+            </select>
+            <div infinite-scroll='loadMore()'>
+			    <li class="bodyLi" ng-repeat="session in event.sessions | limitTo: filterNoOf | orderBy:sortorder" ng-click="openCharacterDetails()" ng-mouseover="hoverIn();" ng-mouseleave="hoverOut();">
+				
+				    <div class="row session">
+					    @*<div class="span0 well votingWidget">
+						    <div class="votingButton" ng-click="upVoteSession(session)">
+							    <i class="icon-chevron-up icon-white"></i>
+						    </div>
+						    <div class="badge badge-inverse">
+							    <div>{{session.upVoteCount}}</div>
+						    </div>
+						    <div class="votingButton" ng-click="downVoteSession(session)">
+							    <i class="icon-chevron-down"></i>
+						    </div>
+					    </div>*@
+
+					        <div class="pixoutlined">
+                                <div class="outlined">
+						            <h4 class="well-title">{{session.name}}</h4>
+                                    <h6 style="margin-top:-10px">{{session.familyName}}</h6>
+                                    <img height="70" width="70"  ng-src="{{session.imageUrl}}" alt="{{session.name}}" />&thinsp;
+						            <span>{{session.realLifeName}}</span>&thinsp;
+                                    @*<span>{{session.biography}}</span> <br />*@
+                                    <span align="right"><strong>Born: </strong>{{session.born}}</span>&thinsp;
+                                    <span align="right" ng-show="session.stillAlive">Character alive &thinsp; <img height="45" width="45"  ng-src="{{imageAlive}}" alt="{{session.name}}" />&thinsp;</span>
+                                    <span align="right" ng-show="session.notAlive">Character not alive &thinsp; <img height="45" width="45"  ng-src="{{imageDead}}" alt="{{session.name}}" />&thinsp;</span>
+                                    <span align="right" width="30px"><a ng-show="hoverEdit" class="animate-show">More details</a></span><br />
+                                </div>
+					        </div>
+                        </div>
+			    </li>
+            </div>
+		</ul>
+    </div>
+   @* <strong>{{servicetest}}</strong>*@
+</div>

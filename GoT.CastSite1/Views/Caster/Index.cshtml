@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h5>Detailed information for chosen caste
+</h5>
+
+<div class="span1" ng-controller="CharacterController" ng-init="loadCharacter(@ViewBag.id)">
+    @*<a>{{test}}</a>*@
+
+    <li class="bodyLi"><a>Seven noble families fight for control of the mythical land of Westeros.</a></li>
+    <br />
+
+    <div class="container-fluid">
+    	<ul class="thumbnails">
+			<li class="bodyLi">
+				
+				<div class="row session">
+					<div class="span9">
+						<h4 class="well-title">{{character.name}}</h4>
+                        <h6 style="margin-top:-10px"><strong>Family: </strong>{{character.familyName}}</h6><br />
+                        <img height="140" width="140"  ng-src="{{character.imageUrl}}" alt="{{character.name}}" /><br/>
+                        <span></span>
+                        <span><strong>Description: </strong>{{character.characterDescription}}</span> <br />
+						<span><strong>Actor name: </strong>{{character.realLifeName}}</span><br />
+                        <span><strong>Biogrphy: </strong>{{character.biography}}</span> <br /><br />
+                        <span><strong>Born: </strong>{{character.born}}</span>
+                        <span ng-show="character.stillAlive">Character alive <img height="45" width="45"  ng-src="{{imageAlive}}" alt="{{character.name}}" /></span>
+                        <span ng-show="character.notAlive">Character not alive <img height="45" width="45"  ng-src="{{imageDead}}" alt="{{character.name}}" /></span><br />
+
+					</div>
+				</div>
+			</li>
+		</ul>
+    </div>
